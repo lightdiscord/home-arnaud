@@ -6,7 +6,8 @@ let
     ];
 in {
     imports = [
-        ./programs/git.nix
+        ./cfg/git.nix
+        ./cfg/i3wm.nix
     ];
 
     home.packages = packages;
