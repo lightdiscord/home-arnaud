@@ -1,0 +1,12 @@
+# Ignore everything, cuz' I've useless things here.
+/*
+
+# Do I have to comment this ? You're not stupid !
+!.gitignore
+
+# Sub-folders things
+!/.config
+/.config/*
+
+# Nixpkgs files, cuz' I use NixOS! I'm waiting for you Captain Obvious!
+!.config/nixpkgs
