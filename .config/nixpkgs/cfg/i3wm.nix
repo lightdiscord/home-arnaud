@@ -29,6 +29,11 @@ in {
             "Up" = "focus up";
             "Right" = "focus right";
 
+            "Shift+Left" = "move left";
+            "Shift+Down" = "move down";
+            "Shift+Up" = "move up";
+            "Shift+Right" = "move right";
+
             "h" = "split h";
             "v" = "split v";
             "f" = "fullscreen toggle";
