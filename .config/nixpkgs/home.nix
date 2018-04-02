@@ -9,6 +9,7 @@ let
         chromium
         discord
         spotify
+        pavucontrol
     ]);
 in {
     imports = ([

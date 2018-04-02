@@ -13,7 +13,7 @@ let
     };
 
     lockScript = pkgs.writeText "lock.sh" ''
-        #!/usr/bin/env bash
+        #!${pkgs.bash}
 
         cd $(mktemp -d)
         ${pkgs.imagemagick}/bin/import -window root 'bg.png'
