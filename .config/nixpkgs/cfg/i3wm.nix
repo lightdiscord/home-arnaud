@@ -19,6 +19,10 @@ in {
     xsession.windowManager.i3.config = {
         gaps.inner = 10;
 
+        floating.criteria = [
+            { class = "Pinentry"; }
+        ];
+
         keybindings = lib.mapAttrs' (name: value: lib.nameValuePair (mainKey + "+" + name) value) {
             "Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             "Shift+q" = "kill";
