@@ -3,6 +3,8 @@
 let
     packages = with pkgs; [
         chromium
+        discord
+        spotify
     ];
 in {
     imports = [
