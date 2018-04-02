@@ -13,3 +13,6 @@
 
 # Show i3wm configuration, even if it was generated with home-manager.
 !.config/i3
+
+# Git configuration on the way!
+!.config/git
