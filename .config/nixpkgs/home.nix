@@ -18,6 +18,7 @@ in {
     ]);
 
     home.packages = packages;
+    home.keyboard.layout = "fr";
 
     programs.home-manager = {
         enable = true;

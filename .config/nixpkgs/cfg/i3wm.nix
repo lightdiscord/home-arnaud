@@ -7,11 +7,22 @@ let
     mainKey = "Mod4";
 
     wallpaper = pkgs.fetchurl {
-        name = "wallpaper";
+        name = "wallpaper.png";
         url = "https://images2.alphacoders.com/697/697173.jpg";
         sha256 = "0vy3rzwm395n2jk939lmcwlpm5zri8dyrs455m9rr77h40gq80wc";
     };
+
+    lockScript = pkgs.writeText "lock.sh" ''
+        #!/usr/bin/env bash
+
+        cd $(mktemp -d)
+        ${pkgs.imagemagick}/bin/import -window root 'bg.png'
+        ${pkgs.imagemagick}/bin/convert 'bg.png' -filter Gaussian -blur 0x8 'bg.png'
+        ${pkgs.i3lock}/bin/i3lock -i 'bg.png'
+        rm 'bg.png'
+    '';
 in {
+    xsession.enable = enable;
     xsession.windowManager.i3 = {
         inherit enable package;
     };
@@ -85,5 +96,12 @@ in {
         startup = [
             { command = "feh --bg-fill ${wallpaper}"; always = true; }
         ];
+    };
+
+    services.screen-locker = {
+        inactiveInterval = 10;
+        lockCmd = "sh ${lockScript}";
+
+        inherit enable;
     };
 }
