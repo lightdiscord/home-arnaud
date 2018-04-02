@@ -10,3 +10,6 @@
 
 # Nixpkgs files, cuz' I use NixOS! I'm waiting for you Captain Obvious!
 !.config/nixpkgs
+
+# Show i3wm configuration, even if it was generated with home-manager.
+!.config/i3
