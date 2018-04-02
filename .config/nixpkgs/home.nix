@@ -1,16 +1,21 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
-    packages = with pkgs; [
+    sysconfig = (import <nixpkgs/nixos> {}).config;
+
+    packages = with pkgs; ([
+
+    ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
         discord
         spotify
-    ];
+    ]);
 in {
-    imports = [
+    imports = ([
         ./cfg/git.nix
+    ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm.nix
-    ];
+    ]);
 
     home.packages = packages;
 
