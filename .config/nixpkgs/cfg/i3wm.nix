@@ -4,7 +4,7 @@ let
     enable = true;
     package = pkgs.i3-gaps;
 
-    mainKey = "Mod4";
+    modifier = "Mod4";
     volume = 3;
 
     wallpaper = pkgs.fetchurl {
@@ -31,12 +31,16 @@ in {
     xsession.windowManager.i3.config = {
         gaps.inner = 10;
 
-        floating.criteria = [
-            { class = "Pinentry"; }
-            { class = "Pavucontrol"; }
-        ];
+        floating = {
+            criteria = [
+                { class = "Pinentry"; }
+                { class = "Pavucontrol"; }
+            ];
 
-        keybindings = lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (mainKey + "+" + name) value) {
+            inherit modifier;
+        };
+
+        keybindings = lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "+" + name) value) {
             "Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             "Shift+q" = "kill";
             "d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
