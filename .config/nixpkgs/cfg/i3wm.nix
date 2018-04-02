@@ -5,6 +5,7 @@ let
     package = pkgs.i3-gaps;
 
     mainKey = "Mod4";
+    volume = 3;
 
     wallpaper = pkgs.fetchurl {
         name = "wallpaper.png";
@@ -32,9 +33,10 @@ in {
 
         floating.criteria = [
             { class = "Pinentry"; }
+            { class = "Pavucontrol"; }
         ];
 
-        keybindings = lib.mapAttrs' (name: value: lib.nameValuePair (mainKey + "+" + name) value) {
+        keybindings = lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (mainKey + "+" + name) value) {
             "Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             "Shift+q" = "kill";
             "d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
@@ -86,6 +88,10 @@ in {
             "Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
             "r" = "mode resize";
+        }) {
+            "XF86AudioRaiseVolume" = "exec amixer -q set Master ${toString volume}%+";
+            "XF86AudioLowerVolume" = "exec amixer -q set Master ${toString volume}%-";
+            "XF86AudioMute" = "exec amixer -q set Master toggle";
         };
 
         window = {
