@@ -89,13 +89,13 @@ in {
 
             "Shift+c" = "reload";
             "Shift+r" = "restart";
-            "Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
+            "Shift+e" = "exec ${package}/bin/i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
             "r" = "mode resize";
         }) {
-            "XF86AudioRaiseVolume" = "exec amixer -q set Master ${toString volume}%+";
-            "XF86AudioLowerVolume" = "exec amixer -q set Master ${toString volume}%-";
-            "XF86AudioMute" = "exec amixer -q set Master toggle";
+            "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
+            "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
+            "XF86AudioMute" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
         };
 
         window = {
@@ -104,7 +104,7 @@ in {
         };
 
         startup = [
-            { command = "feh --bg-fill ${wallpaper}"; always = true; }
+            { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; always = true; }
         ];
     };
 
