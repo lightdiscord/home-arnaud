@@ -4,7 +4,7 @@ let
     sysconfig = (import <nixpkgs/nixos> {}).config;
 
     packages = with pkgs; ([
-
+    	taskwarrior
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
         discord
