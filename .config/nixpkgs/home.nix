@@ -5,6 +5,7 @@ let
 
     packages = with pkgs; ([
     	taskwarrior
+        gitAndTools.gitflow
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
         discord
