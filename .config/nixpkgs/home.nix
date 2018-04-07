@@ -14,6 +14,7 @@ let
 in {
     imports = ([
         ./cfg/git.nix
+        ./cfg/fish
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm.nix
     ]);
