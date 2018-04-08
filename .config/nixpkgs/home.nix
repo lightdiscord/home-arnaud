@@ -3,6 +3,12 @@
 let
     sysconfig = (import <nixpkgs/nixos> {}).config;
 
+    overlays = {
+        mozilla = import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz);
+    };
+
+    nixpkgs = import <nixpkgs> { overlays = [ overlays.mozilla ]; };
+
     packages = with pkgs; ([
     	taskwarrior
         gitAndTools.gitflow
@@ -12,6 +18,7 @@ let
         spotify
         pavucontrol
         google-chrome
+        nixpkgs.latest.firefox-nightly-bin
     ]);
 in {
     imports = ([
