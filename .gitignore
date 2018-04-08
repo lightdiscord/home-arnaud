@@ -19,3 +19,6 @@
 
 # Fish 'n chips
 !.config/fish
+
+# My binaries!
+!/bin

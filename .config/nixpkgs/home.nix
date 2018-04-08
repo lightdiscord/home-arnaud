@@ -11,6 +11,7 @@ let
         discord
         spotify
         pavucontrol
+        google-chrome
     ]);
 in {
     imports = ([
@@ -18,6 +19,7 @@ in {
         ./cfg/fish
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm.nix
+        ./cfg/netflix.nix
     ]);
 
     home.packages = packages;
