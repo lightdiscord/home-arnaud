@@ -92,6 +92,9 @@ in {
             "Shift+e" = "exec ${package}/bin/i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
 
             "r" = "mode resize";
+
+            "Tab" = "workspace next_on_output";
+            "Shift+Tab" = "workspace prev_on_output";
         }) {
             "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
             "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
