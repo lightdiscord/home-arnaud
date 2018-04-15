@@ -13,15 +13,26 @@ let
         sha256 = "0vy3rzwm395n2jk939lmcwlpm5zri8dyrs455m9rr77h40gq80wc";
     };
 
-    lockScript = pkgs.writeText "lock.sh" ''
-        #!${pkgs.bash}/bin/bash
+    scripts = {
+        lock = pkgs.writeScript "lock.sh" ''
+            #!${pkgs.bash}/bin/bash
 
-        cd $(mktemp -d)
-        ${pkgs.imagemagick}/bin/import -window root 'bg.png'
-        ${pkgs.imagemagick}/bin/convert 'bg.png' -filter Gaussian -blur 0x8 'bg.png'
-        ${pkgs.i3lock}/bin/i3lock -i 'bg.png'
-        rm 'bg.png'
-    '';
+            cd $(mktemp -d)
+            ${pkgs.imagemagick}/bin/import -window root 'bg.png'
+            ${pkgs.imagemagick}/bin/convert 'bg.png' -filter Gaussian -blur 0x8 'bg.png'
+            ${pkgs.i3lock}/bin/i3lock -i 'bg.png'
+            rm 'bg.png'
+        '';
+
+        screenshot = pkgs.writeScript "screenshot.sh" ''
+            #!${pkgs.bash}/bin/bash
+
+            mkdir -p ${builtins.getEnv "HOME"}/Pictures/Screenshots
+            cd $(mktemp -d)
+            ${pkgs.imagemagick}/bin/import $(date +"%F_%T.png")
+            mv *.png ${builtins.getEnv "HOME"}/Pictures/Screenshots
+        '';
+    };
 in {
     xsession.enable = enable;
     xsession.windowManager.i3 = {
@@ -99,6 +110,9 @@ in {
             "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
             "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
             "XF86AudioMute" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
+
+            #"Print" = "exec --no-startup-id ${scripts.screenshot}";
+            "Print" = "exec --no-startup-id ${pkgs.imagemagick}/bin/import truc.png";
         };
 
         window = {
@@ -113,7 +127,7 @@ in {
 
     services.screen-locker = {
         inactiveInterval = 10;
-        lockCmd = "sh ${lockScript}";
+        lockCmd = "sh ${scripts.lock}";
 
         inherit enable;
     };
