@@ -19,6 +19,7 @@ let
         pavucontrol
         google-chrome
         nixpkgs.latest.firefox-nightly-bin
+        feh
     ]);
 in {
     imports = ([

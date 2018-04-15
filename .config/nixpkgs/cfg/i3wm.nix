@@ -24,14 +24,26 @@ let
             rm 'bg.png'
         '';
 
-        screenshot = pkgs.writeScript "screenshot.sh" ''
-            #!${pkgs.bash}/bin/bash
+        screenshot = { mode ? "select", ... }:
+            let 
+                package = "${pkgs.imagemagick}/bin/import";
+                scripts = {
+                    select = ''
+                        ${package} $(date +"$BASE/%F_%T.jpg")
+                    '';
 
-            mkdir -p ${builtins.getEnv "HOME"}/Pictures/Screenshots
-            cd $(mktemp -d)
-            ${pkgs.imagemagick}/bin/import $(date +"%F_%T.png")
-            mv *.png ${builtins.getEnv "HOME"}/Pictures/Screenshots
-        '';
+                    window = ''
+                        ID=`${pkgs.xorg.xwininfo}/bin/xwininfo | grep 'id: 0x' | grep -Eo '0x[a-z0-9]+'`
+                        ${package} -window $ID $(date +"$BASE/%F_%T_window.jpg")
+                    '';
+                };
+            in pkgs.writeScript "screenshot.sh" ''
+                #!${pkgs.bash}/bin/bash
+
+                BASE="${builtins.getEnv "HOME"}/Pictures/Screenshots"
+                mkdir -p $BASE
+                ${scripts.${mode}}
+            '';
     };
 in {
     xsession.enable = enable;
@@ -111,8 +123,8 @@ in {
             "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
             "XF86AudioMute" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
 
-            #"Print" = "exec --no-startup-id ${scripts.screenshot}";
-            "Print" = "exec --no-startup-id ${pkgs.imagemagick}/bin/import truc.png";
+            "--release Print" = "exec --no-startup-id ${scripts.screenshot {}}";
+            "--release Shift+Print" = "exec --no-startup-id ${scripts.screenshot { mode = "window"; }}";
         };
 
         window = {
