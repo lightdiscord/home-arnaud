@@ -20,6 +20,7 @@ let
         google-chrome
         nixpkgs.latest.firefox-nightly-bin
         feh
+        obs-studio
     ]);
 in {
     imports = ([

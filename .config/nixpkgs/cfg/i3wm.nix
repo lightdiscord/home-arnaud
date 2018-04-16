@@ -125,6 +125,8 @@ in {
 
             "--release Print" = "exec --no-startup-id ${scripts.screenshot {}}";
             "--release Shift+Print" = "exec --no-startup-id ${scripts.screenshot { mode = "window"; }}";
+
+            "--release ${modifier}+l" = "exec --no-startup-id ${scripts.lock}";
         };
 
         window = {
