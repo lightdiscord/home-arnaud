@@ -129,9 +129,18 @@ in {
             "--release ${modifier}+l" = "exec --no-startup-id ${scripts.lock}";
         };
 
+        assigns = {
+            "3" = [{ class = "discord"; }];
+            "10" = [{ class = "Navigator"; } { class = "Firefox"; }];
+        };
+
         window = {
             border = 0;
             titlebar = false;
+
+            commands = [
+                { command = "move to workspace 4"; criteria = { class = "Spotify"; }; }
+            ];
         };
 
         startup = [
