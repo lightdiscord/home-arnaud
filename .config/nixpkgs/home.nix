@@ -32,6 +32,7 @@ in {
         ./cfg/netflix.nix
         #(import ./cfg/vscode.nix { inherit nixpkgs; })
         ./cfg/vscode.nix
+        ./cfg/mail.nix
     ]);
 
     home.packages = packages;
