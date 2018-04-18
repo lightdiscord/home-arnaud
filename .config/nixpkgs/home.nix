@@ -30,6 +30,8 @@ in {
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm.nix
         ./cfg/netflix.nix
+        #(import ./cfg/vscode.nix { inherit nixpkgs; })
+        ./cfg/vscode.nix
     ]);
 
     home.packages = packages;
