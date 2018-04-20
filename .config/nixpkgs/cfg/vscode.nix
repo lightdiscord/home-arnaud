@@ -26,11 +26,11 @@ let
             version = "0.4.1";
             sha256 = "1sqh8mxia7w0zdrbzvk7acw6aasqa1p6l2f3knzmpsijdb6si8g8";
         }
-        #{
-        #    name = "tinkertrain.theme-panda";
-        #    version = "1.2.0";
-        #    sha256 = "0nv71rv7rksqf4hdh7j9iaj4l0xipm67pg8wc5dbipv13liigxdq";
-        #}
+        {
+            name = "tinkertrain.theme-panda";
+            version = "1.2.0";
+            sha256 = "0nv71rv7rksqf4hdh7j9iaj4l0xipm67pg8wc5dbipv13liigxdq";
+        }
         {
             name = "vscodevim.vim";
             version = "0.11.4";
