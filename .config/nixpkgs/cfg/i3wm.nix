@@ -66,7 +66,7 @@ in {
         keybindings = lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "+" + name) value) {
             "Return" = "exec ${pkgs.alacritty}/bin/alacritty";
             "Shift+q" = "kill";
-            "d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+            "d" = "exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop";
 
             "Left" = "focus left";
             "Down" = "focus down";

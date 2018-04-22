@@ -52,4 +52,10 @@ in {
         version = "0.12.1";
         sha256 = "0c8lh20pvsxs0c1n7p0762bvfc1w5fi3gmbh3a39cxkhrizgaii4";
     };
+
+    bungcip.better-toml = build {
+        name = "bungcip.better-toml";
+        version = "0.3.2";
+        sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3";
+    };
 }

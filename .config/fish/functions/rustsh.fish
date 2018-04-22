@@ -1,1 +1,1 @@
-/nix/store/bvx8g0ssvgsj26nll6vnj84iviv9rgnr-home-manager-files/.config/fish/functions/rustsh.fish
+/nix/store/9dzl3lvl51ksl4gfh35v4svrg4wmpd1v-home-manager-files/.config/fish/functions/rustsh.fish

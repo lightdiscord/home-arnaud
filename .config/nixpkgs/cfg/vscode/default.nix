@@ -5,7 +5,7 @@ let
         "window.menuBarVisibility" = "toggle";
         "git.confirmSync" = false;
         "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Panda Syntax";
+        "workbench.colorTheme" = "Solarized Light";
         "material-icon-theme.folders.theme" = "specific";
         "rust-client.rustupPath" = "${pkgs.rustup}/bin/rustup";
     };
@@ -18,6 +18,7 @@ let
         vscodevim.vim
         PKief.material-icon-theme
         EditorConfig.editorconfig
+        bungcip.better-toml
     ];
 in {
     home.file = {

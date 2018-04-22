@@ -13,6 +13,8 @@ let
     	taskwarrior
         gitAndTools.gitflow
         psmisc
+
+        nixpkgs.latest.rustChannels.nightly.rust
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
         discord
@@ -32,6 +34,7 @@ in {
         ./cfg/netflix.nix
         ./cfg/vscode
         ./cfg/mail.nix
+        ./cfg/redshift.nix
     ]);
 
     home.packages = packages;
