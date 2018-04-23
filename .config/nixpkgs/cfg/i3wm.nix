@@ -123,6 +123,10 @@ in {
             "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
             "XF86AudioMute" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
 
+            "XF86AudioPrev" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
+            "XF86AudioPlay" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";
+            "XF86AudioNext" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
+
             "--release Print" = "exec --no-startup-id ${scripts.screenshot {}}";
             "--release Shift+Print" = "exec --no-startup-id ${scripts.screenshot { mode = "window"; }}";
 
