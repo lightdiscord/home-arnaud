@@ -1,11 +1,13 @@
 { nixpkgs, pkgs, lib, ... }:
 
 let
+    theme = "Material Theme Ocean High Contrast";
+
     config = {
         "window.menuBarVisibility" = "toggle";
         "git.confirmSync" = false;
         "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Solarized Light";
+        "workbench.colorTheme" = theme;
         "material-icon-theme.folders.theme" = "specific";
         "rust-client.rustupPath" = "${pkgs.rustup}/bin/rustup";
     };
@@ -20,6 +22,7 @@ let
         EditorConfig.editorconfig
         bungcip.better-toml
         yzhang.markdown-all-in-one
+        Equinusocio.vsc-material-theme
     ];
 in {
     home.file = {

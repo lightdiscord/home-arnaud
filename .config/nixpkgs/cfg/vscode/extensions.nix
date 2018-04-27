@@ -64,4 +64,10 @@ in {
         version = "1.2.0";
         sha256 = "0zr271kcqklrkrksjdnx2rfdd0qx5n476mgbvxa2nnk7a9s8ylba";
     };
+
+    Equinusocio.vsc-material-theme = build {
+        name = "Equinusocio.vsc-material-theme";
+        version = "2.0.1";
+        sha256 = "17irihgqxp544529x3wch0smywwijp8rm1ayg29m0v8b9jn8da9c";
+    };
 }

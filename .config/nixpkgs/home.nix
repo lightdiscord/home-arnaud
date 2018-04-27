@@ -32,7 +32,7 @@ in {
         ./cfg/git.nix
         ./cfg/fish
     ] ++ lib.optionals sysconfig.services.xserver.enable [
-        ./cfg/i3wm.nix
+        ./cfg/i3wm
         ./cfg/netflix.nix
         ./cfg/vscode
         ./cfg/mail.nix
