@@ -14,6 +14,8 @@ let
         gitAndTools.gitflow
         psmisc
 
+        gcc
+        gnumake
         nixpkgs.latest.rustChannels.nightly.rust
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium

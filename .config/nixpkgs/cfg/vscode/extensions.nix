@@ -58,4 +58,10 @@ in {
         version = "0.3.2";
         sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3";
     };
+    
+    yzhang.markdown-all-in-one = build {
+        name = "yzhang.markdown-all-in-one";
+        version = "1.2.0";
+        sha256 = "0zr271kcqklrkrksjdnx2rfdd0qx5n476mgbvxa2nnk7a9s8ylba";
+    };
 }

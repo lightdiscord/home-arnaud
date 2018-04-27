@@ -19,6 +19,7 @@ let
         PKief.material-icon-theme
         EditorConfig.editorconfig
         bungcip.better-toml
+        yzhang.markdown-all-in-one
     ];
 in {
     home.file = {

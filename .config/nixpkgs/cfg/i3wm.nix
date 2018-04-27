@@ -44,6 +44,13 @@ let
                 mkdir -p $BASE
                 ${scripts.${mode}}
             '';
+
+        creator = { min ? 11, max ? 99, ... }:
+            pkgs.writeScript "creator.sh" ''
+                #!${pkgs.bash}/bin/bash
+
+                i3-msg workspace number `shuf -i ${toString min}-${toString max} -n 1`
+            '';
     };
 in {
     xsession.enable = enable;
@@ -118,6 +125,8 @@ in {
 
             "Tab" = "workspace next_on_output";
             "Shift+Tab" = "workspace prev_on_output";
+
+            "KP_Add" = "exec --no-startup-id ${scripts.creator {}}";
         }) {
             "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
             "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
