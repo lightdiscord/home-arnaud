@@ -23,6 +23,8 @@ let
         bungcip.better-toml
         yzhang.markdown-all-in-one
         Equinusocio.vsc-material-theme
+        wiggin77.codedox
+        wwm.better-align
     ];
 in {
     home.file = {

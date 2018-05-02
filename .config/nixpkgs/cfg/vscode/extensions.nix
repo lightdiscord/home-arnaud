@@ -70,4 +70,16 @@ in {
         version = "2.0.1";
         sha256 = "17irihgqxp544529x3wch0smywwijp8rm1ayg29m0v8b9jn8da9c";
     };
+
+    wiggin77.codedox = build {
+        name = "wiggin77.codedox";
+        version = "1.2.7";
+        sha256 = "1b3m4balmrf09iprn3xhskivc8895b5s94gysaa37xzkyy5azf9d";
+    };
+
+    wwm.better-align = build {
+        name = "wwm.better-align";
+        version = "1.1.6";
+        sha256 = "1ldvpava9xlqy3zwwc0c04pk9dh09jwcwz5lk3b2cr1z8bxn54lh";
+    };
 }

@@ -15,6 +15,9 @@ lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "
         "Shift+Up" = "move up";
         "Shift+Right" = "move right";
 
+        "Control+Left" = "move workspace to output left";
+        "Control+Right" = "move workspace to output right";
+
         "h" = "split h";
         "v" = "split v";
         "f" = "fullscreen toggle";
@@ -56,7 +59,8 @@ lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "
         "Tab" = "workspace next_on_output";
         "Shift+Tab" = "workspace prev_on_output";
 
-        "KP_Add" = "exec --no-startup-id ${scripts.creator {}}";
+        "KP_Add" = "exec --no-startup-id ${scripts.random {}}";
+        "Shift+KP_Add" = "exec --no-startup-id ${scripts.random { move = true; }}";
 }) {
     "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
     "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";

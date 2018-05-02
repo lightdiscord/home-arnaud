@@ -9,6 +9,8 @@ let
 
     nixpkgs = import <nixpkgs> { overlays = [ overlays.mozilla ]; };
 
+    # nodejs = pkgs.callPackage <nixpkgs/pkgs/development/web/nodejs/nodejs.nix> {};
+
     packages = with pkgs; ([
     	taskwarrior
         gitAndTools.gitflow
@@ -16,9 +18,20 @@ let
 
         gcc
         gnumake
+
+        # (
+        #     nodejs {
+        #         enableNpm = true;
+        #         version = "10.0.0";
+        #         sha256 = "0l5bx2j4f2ij19kx14my7g7k37j3fn9qpjvbisjvhpbm42810fg2";
+        #         patches = [];
+        #     }
+        # )
+
         nixpkgs.latest.rustChannels.nightly.rust
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
+        #(pkgs.callPackage ./pkgs/discord.nix {})
         discord
         spotify
         pavucontrol
@@ -26,6 +39,9 @@ let
         nixpkgs.latest.firefox-nightly-bin
         feh
         obs-studio
+        #robo3t
+        (pkgs.callPackage ./pkgs/robo3t.nix {})
+        (pkgs.callPackage ./pkgs/dunst.nix {})
     ]);
 in {
     imports = ([

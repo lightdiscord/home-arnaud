@@ -24,4 +24,4 @@
 !/bin
 
 # You'll need to wait until beta end
-.config/nixpkgs/pkgs/protonmail.nix
+.config/nixpkgs/pkgs/TESTS/protonmail.nix

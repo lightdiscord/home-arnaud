@@ -1,4 +1,4 @@
-{ pkgs, package, ... }:
+{ pkgs, package, lib, ... }:
 
 {
     lock = pkgs.writeScript "lock.sh" ''
@@ -32,10 +32,12 @@
             ${scripts.${mode}}
         '';
 
-    creator = { min ? 11, max ? 99, ... }:
-        pkgs.writeScript "creator.sh" ''
+    random = { move ? false, min ? 11, max ? 99, ... }:
+        pkgs.writeScript "random.sh" ''
             #!${pkgs.bash}/bin/bash
 
-            i3-msg workspace number `shuf -i ${toString min}-${toString max} -n 1`
+            random=`shuf -i ${toString min}-${toString max} -n 1`
+            ${lib.optionalString move "i3-msg move container to workspace number $random"}
+            i3-msg workspace number $random
         '';
 }
