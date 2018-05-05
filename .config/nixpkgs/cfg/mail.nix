@@ -4,7 +4,7 @@
 {
     home.packages = [
         pkgs.nylas-mail-bin
-        (pkgs.callPackage ../pkgs/protonmail.nix {}) 
+        (pkgs.callPackage ../pkgs/TESTS/protonmail.nix {}) 
     ];
 
     services.gnome-keyring.enable = true;

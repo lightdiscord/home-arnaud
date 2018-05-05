@@ -8,6 +8,7 @@ let
         "git.confirmSync" = false;
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.colorTheme" = theme;
+        "workbench.statusBar.feedback.visible" = false;
         "material-icon-theme.folders.theme" = "specific";
         "rust-client.rustupPath" = "${pkgs.rustup}/bin/rustup";
     };
@@ -25,6 +26,7 @@ let
         Equinusocio.vsc-material-theme
         wiggin77.codedox
         wwm.better-align
+        octref.vetur
     ];
 in {
     home.file = {

@@ -82,4 +82,10 @@ in {
         version = "1.1.6";
         sha256 = "1ldvpava9xlqy3zwwc0c04pk9dh09jwcwz5lk3b2cr1z8bxn54lh";
     };
+    
+    octref.vetur = build {
+        name = "octref.vetur";
+        version = "0.11.7";
+        sha256 = "07w5p0nw7wclyni2f9xx5pdgdx06war41zrdjjdakrzpng7jy0lr";
+    };
 }

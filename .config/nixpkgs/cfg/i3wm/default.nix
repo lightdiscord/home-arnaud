@@ -13,11 +13,13 @@ let
         sha256 = "0vy3rzwm395n2jk939lmcwlpm5zri8dyrs455m9rr77h40gq80wc";
     };
 
-    #iconTheme = {
-    #    package = (pkgs.callPackage ../../pkgs/papirus-png.nix {});
-    #    name = "Papirus";
-    #    size = "32x32";
-    #};
+    iconTheme = {
+        package = pkgs.papirus-icon-theme;
+        name = "Papirus";
+        size = "64x64";
+    };
+
+    #dunst = (pkgs.callPackage ../../pkgs/TESTS/dunst.nix {});
 
     scripts = (pkgs.callPackage ./scripts.nix {
         inherit package;
@@ -61,6 +63,7 @@ in {
         };
 
         startup = [
+            #{ command = "--no-startup-id killall dunst; ${dunst}/bin/dunst"; always = true; }
             { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; always = true; }
         ];
     };
@@ -138,7 +141,7 @@ in {
             };
             spotify = {
                 appname = "Spotify";
-                new_icon = "/home/arnaud/Documents/papirus-icons/Papirus/64x64/apps/spotify-client.png";
+                new_icon = "spotify-client";
                 urgency = "normal";
             };
             imgur = {
@@ -147,6 +150,35 @@ in {
             };
         };
 
-        inherit enable; # iconTheme;
+        inherit enable iconTheme;
     };
+
+    #xdg.dataFile."dbus-1/services/org.knopwob.dunst.service".source = "${pkgs.dunst}/share/dbus-1/services/org.knopwob.dunst.service";
+
+    systemd.user.services.dunst.Service.Environment = "2GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+    
+    #{
+        #Unit = {
+        #    Description = "Dunst notification daemon";
+        #    After = [ "graphical-session-pre.target" ];
+        #    PartOf = [ "graphical-session.target" ];
+        #};
+
+#        Service = {
+ #           Environment = "GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+            #PassEnvironment = "GDK_PIXBUF_MODULE_FILE";
+            #EnvironmentFile = "/home/arnaud/environment";
+            #Type = "dbus";
+            #BusName = "org.freedesktop.Notifications";
+            #ExecStart = "${pkgs.coreutils}/bin/cat $GDK_PIXBUF_MODULE_FILE";
+            #ExecStart = "${pkgs.coreutils}/bin/printenv";
+  #          ExecStart = "${pkgs.dunst}/bin/dunst";
+            #ExecStart = "/bin/sh ${script}";
+            #ExecStart = "${pkgs.coreutils}/bin/echo \"$GDK_PIXBUF_MODULE_FILE\"";
+   #     };
+
+#    };
+
+    home.sessionVariables."GDK_PIXBUF_MODULE_FILE" = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
+    home.packages = [ pkgs.dunst ];
 }

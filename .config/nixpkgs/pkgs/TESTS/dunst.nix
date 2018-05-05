@@ -1,25 +1,29 @@
-{ stdenv, fetchFromGitHub, fetchpatch
+{ stdenv, fetchFromGitHub, fetchpatch, callPackage
 , pkgconfig, which, perl, libXrandr
-, cairo, dbus, systemd, gdk_pixbuf, glib, libX11, libXScrnSaver
-, libXinerama, libnotify, libxdg_basedir, pango, xproto, librsvg
+, cairo, dbus, systemd, glib, libX11, libXScrnSaver
+, libXinerama, libnotify, libxdg_basedir, pango, xproto
 }:
 
-stdenv.mkDerivation rec {
-  name = "dunst-fixes-${version}";
+let
+  librsvg = (callPackage ./librsvg.nix {});
+  gdk_pixbuf = (callPackage ./pixbuf.nix {});
+in stdenv.mkDerivation rec {
+  name = "dunst-fixes-new-${version}";
   version = "1.3.1";
 
   src = fetchFromGitHub {
     owner = "dunst-project";
     repo = "dunst";
-    rev = "534b09cfcdf456fa8736ddd315da6ec0c2a45b08";
-    sha256 = "0s8zalcpz040rgsqs12q05m078wshhqjwmghiaahg3p4qr95xcxy";
+    rev = "6c126eef32f7b459c47b4066b3bfc33bcb70e81e";
+    sha256 = "10drpgxc3d63xf89xr812qnvp8mgrkysjaa1nyph35fgpdk2y627";
   };
 
   nativeBuildInputs = [ perl pkgconfig which systemd ];
 
   buildInputs = [
-    cairo dbus gdk_pixbuf glib libX11 libXScrnSaver
+    cairo dbus glib libX11 libXScrnSaver
     libXinerama libnotify libxdg_basedir pango xproto librsvg libXrandr
+    gdk_pixbuf
   ];
 
   outputs = [ "out" "man" ];
