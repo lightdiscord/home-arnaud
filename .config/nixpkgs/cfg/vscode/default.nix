@@ -27,6 +27,7 @@ let
         wiggin77.codedox
         wwm.better-align
         octref.vetur
+        vadimcn.vscode-lldb
     ];
 in {
     home.file = {

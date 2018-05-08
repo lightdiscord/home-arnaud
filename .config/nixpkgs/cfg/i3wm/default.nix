@@ -16,10 +16,10 @@ let
     iconTheme = {
         package = pkgs.papirus-icon-theme;
         name = "Papirus";
-        size = "64x64";
+        size = "48x48";
     };
 
-    #dunst = (pkgs.callPackage ../../pkgs/TESTS/dunst.nix {});
+    dunst = (pkgs.callPackage ../../pkgs/TESTS/dunst.nix {});
 
     scripts = (pkgs.callPackage ./scripts.nix {
         inherit package;
@@ -36,8 +36,6 @@ in {
         keybindings = (import ./keybindings.nix {
             inherit pkgs lib package scripts modifier volume;
         });
-
-        gaps.inner = 10;
 
         floating = {
             criteria = [
@@ -63,7 +61,6 @@ in {
         };
 
         startup = [
-            #{ command = "--no-startup-id killall dunst; ${dunst}/bin/dunst"; always = true; }
             { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; always = true; }
         ];
     };
@@ -84,7 +81,7 @@ in {
             global = {
                 font = "Roboto 14";
                 markup = "full";
-                format = "%i <b>%s</b>\\n%b";
+                format = "<b>%s</b>\\n%b";
                 sort = true;
                 indicate_hidden = true;
                 alignment = "left";
@@ -109,10 +106,11 @@ in {
                 startup_notification = "false";
                 stack_duplicates = "false";
                 max_icon_size = 48;
+                min_icon_size = 48;
                 dmenu = "${pkgs.dmenu}/bin/dmenu -p dunst:";
                 browser = "${pkgs.xdg_utils}/bin/xdg-open";
                 icon_position = "left";
-                #icon_folders = /usr/share/icons/Adwaita/32x32/status/:/usr/share/icons/Adwaita/32x32/devices/:/usr/share/icons/Adwaita/32x32/apps/:/usr/share/icons/:/usr/share/pixmaps/;
+                icon_path = config.services.dunst.settings.global.icon_folders;
             };
             frame = {
                 width = 0;
@@ -144,41 +142,11 @@ in {
                 new_icon = "spotify-client";
                 urgency = "normal";
             };
-            imgur = {
-                appname = "ImgurScreenshot";
-                format = "";
-            };
         };
 
         inherit enable iconTheme;
     };
 
-    #xdg.dataFile."dbus-1/services/org.knopwob.dunst.service".source = "${pkgs.dunst}/share/dbus-1/services/org.knopwob.dunst.service";
-
-    systemd.user.services.dunst.Service.Environment = "2GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
-    
-    #{
-        #Unit = {
-        #    Description = "Dunst notification daemon";
-        #    After = [ "graphical-session-pre.target" ];
-        #    PartOf = [ "graphical-session.target" ];
-        #};
-
-#        Service = {
- #           Environment = "GDK_PIXBUF_MODULE_FILE=${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
-            #PassEnvironment = "GDK_PIXBUF_MODULE_FILE";
-            #EnvironmentFile = "/home/arnaud/environment";
-            #Type = "dbus";
-            #BusName = "org.freedesktop.Notifications";
-            #ExecStart = "${pkgs.coreutils}/bin/cat $GDK_PIXBUF_MODULE_FILE";
-            #ExecStart = "${pkgs.coreutils}/bin/printenv";
-  #          ExecStart = "${pkgs.dunst}/bin/dunst";
-            #ExecStart = "/bin/sh ${script}";
-            #ExecStart = "${pkgs.coreutils}/bin/echo \"$GDK_PIXBUF_MODULE_FILE\"";
-   #     };
-
-#    };
-
     home.sessionVariables."GDK_PIXBUF_MODULE_FILE" = "${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache";
-    home.packages = [ pkgs.dunst ];
+    home.packages = [ dunst ];
 }

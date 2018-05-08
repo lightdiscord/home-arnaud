@@ -88,4 +88,10 @@ in {
         version = "0.11.7";
         sha256 = "07w5p0nw7wclyni2f9xx5pdgdx06war41zrdjjdakrzpng7jy0lr";
     };
+    
+    vadimcn.vscode-lldb = build {
+        name = "vadimcn.vscode-lldb";
+        version = "0.8.6";
+        sha256 = "13l8c1iv29j0x5jwysm9pn1fi2drn8lbbdvrvrx9pvc2ffa7xg3s";
+    };
 }

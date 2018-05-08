@@ -27,6 +27,7 @@ in {
     imports = ([
         ./cfg/git.nix
         ./cfg/fish
+        ./cfg/nvim
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm
         ./cfg/netflix.nix
@@ -38,6 +39,8 @@ in {
 
     home.packages = packages;
     home.keyboard.layout = "fr";
+
+    manual.manpages.enable = false;
 
     programs.home-manager = {
         enable = true;

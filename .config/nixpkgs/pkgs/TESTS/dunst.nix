@@ -1,40 +1,44 @@
-{ stdenv, fetchFromGitHub, fetchpatch, callPackage
+{ stdenv, fetchFromGitHub, makeWrapper
 , pkgconfig, which, perl, libXrandr
-, cairo, dbus, systemd, glib, libX11, libXScrnSaver
-, libXinerama, libnotify, libxdg_basedir, pango, xproto
+, cairo, dbus, systemd, gdk_pixbuf, glib, libX11, libXScrnSaver
+, libXinerama, libnotify, libxdg_basedir, pango, xproto, librsvg
 }:
 
-let
-  librsvg = (callPackage ./librsvg.nix {});
-  gdk_pixbuf = (callPackage ./pixbuf.nix {});
-in stdenv.mkDerivation rec {
-  name = "dunst-fixes-new-${version}";
+stdenv.mkDerivation rec {
+  name = "dunst-${version}-TESTS";
   version = "1.3.1";
 
   src = fetchFromGitHub {
     owner = "dunst-project";
     repo = "dunst";
-    rev = "6c126eef32f7b459c47b4066b3bfc33bcb70e81e";
-    sha256 = "10drpgxc3d63xf89xr812qnvp8mgrkysjaa1nyph35fgpdk2y627";
+    rev = "v${version}";
+    sha256 = "0i518v2z9fklzl5w60gkwwmg30yz3bd0k4rxjrxjabx73pvxm1mz";
   };
 
-  nativeBuildInputs = [ perl pkgconfig which systemd ];
+  nativeBuildInputs = [ perl pkgconfig which systemd makeWrapper ];
 
   buildInputs = [
-    cairo dbus glib libX11 libXScrnSaver
+    cairo dbus gdk_pixbuf glib libX11 libXScrnSaver
     libXinerama libnotify libxdg_basedir pango xproto librsvg libXrandr
-    gdk_pixbuf
   ];
 
   outputs = [ "out" "man" ];
 
   makeFlags = [
-    "debug"
     "PREFIX=$(out)"
     "VERSION=$(version)"
     "SERVICEDIR_DBUS=$(out)/share/dbus-1/services"
     "SERVICEDIR_SYSTEMD=$(out)/lib/systemd/user"
   ];
+
+  postInstall = ''
+    echo "-----------------------------"
+    echo $out
+    echo $GDK_PIXBUF_MODULE_FILE
+    echo "-----------------------------"
+    wrapProgram $out/bin/dunst \
+      --set GDK_PIXBUF_MODULE_FILE "$GDK_PIXBUF_MODULE_FILE"
+  '';
 
   meta = with stdenv.lib; {
     description = "Lightweight and customizable notification daemon";
