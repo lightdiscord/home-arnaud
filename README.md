@@ -1,0 +1,1 @@
+# My dotfiles using nix

@@ -1,6 +1,9 @@
 # Ignore everything, cuz' I've useless things here.
 /*
 
+# Some text
+!README.md
+
 # Do I have to comment this ? You're not stupid !
 !.gitignore
 
