@@ -1,10 +1,9 @@
-{ pkgs, ...}:
+{ callPackage, ...}:
 
-# TODO: Wait for Protonmail bridge
+# TODO: Create protonmail package
 {
     home.packages = [
-        pkgs.nylas-mail-bin
-        (pkgs.callPackage ../pkgs/TESTS/protonmail.nix {}) 
+        protonmail-bridge
     ];
 
     services.gnome-keyring.enable = true;

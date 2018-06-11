@@ -3,8 +3,6 @@
 let
     sysconfig = (import <nixpkgs/nixos> {}).config;
 
-    pkgs = import ./pkgs;
-
     packages = with pkgs; ([
         taskwarrior
         gitAndTools.gitflow
@@ -14,25 +12,24 @@ let
         gcc
         gnumake
         latest.rustChannels.nightly.rust
+        nvim.package
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
-        (callPackage <nixpkgs/pkgs/applications/networking/instant-messengers/discord> {})
+        discord
         spotify
         pavucontrol
         google-chrome
         feh
         obs-studio
+        netflix
     ]);
 in {
     imports = ([
         ./cfg/git.nix
         ./cfg/fish
-        ./cfg/nvim
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm
-        ./cfg/netflix.nix
         ./cfg/vscode
-        ./cfg/mail.nix
         ./cfg/redshift.nix
         ./cfg/firefox
     ]);
@@ -44,6 +41,6 @@ in {
 
     programs.home-manager = {
         enable = true;
-        path = "https://github.com/rycee/home-manager/archive/master.tar.gz";
+        path = https://github.com/rycee/home-manager/archive/master.tar.gz;
     };
 }

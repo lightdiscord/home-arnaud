@@ -1,5 +1,9 @@
-import <nixpkgs> {
-    overlays = [
-        (import (builtins.fetchTarball https://github.com/mozilla/nixpkgs-mozilla/archive/master.tar.gz))
-    ];
+self: super:
+
+rec {
+    nvim.package = self.callPackage ./neovim {};
+
+    nvim.plugins = self.callPackage ./neovim/plugins.nix {};
+
+    netflix = self.callPackage ./netflix.nix {};
 }

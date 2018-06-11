@@ -7,11 +7,20 @@ let
     modifier = "Mod4";
     volume = 3;
 
-    wallpaper = pkgs.fetchurl {
-        name = "wallpaper.png";
-        url = "https://images2.alphacoders.com/697/697173.jpg";
-        sha256 = "0vy3rzwm395n2jk939lmcwlpm5zri8dyrs455m9rr77h40gq80wc";
-    };
+    wallpapers = with pkgs; [
+        (fetchurl {
+            url = "https://i.pinimg.com/originals/e1/ae/22/e1ae225c90cdfafefc2fbff144ff3e01.jpg";
+            sha256 = "013wfcw1jzfc38xdlvllf1z8ssb3al37hz0zhjdwir753wph7ib2";
+        })
+        (fetchurl {
+            url = "https://i.imgur.com/bjlCGMv.jpg";
+            sha256 = "1nnpb5s1i06c2vdzlzgxvd5xjy6q4ys9ynsmlvwiwad5rjfsrzzj";
+        })
+        (fetchurl {
+            url = "http://www.modafinilsale.com/data/out/654/232357678-anime-forest-background.jpg";
+            sha256 = "1slrarfr5zjy83vkw0y6j1mkhm420c5zgj63jczd65fkik2gxyv4";
+        })
+    ];
 
     iconTheme = {
         package = pkgs.papirus-icon-theme;
@@ -19,7 +28,7 @@ let
         size = "48x48";
     };
 
-    dunst = (pkgs.callPackage ../../pkgs/TESTS/dunst.nix {});
+    dunst = pkgs.dunst;
 
     scripts = (pkgs.callPackage ./scripts.nix {
         inherit package;
@@ -61,7 +70,7 @@ in {
         };
 
         startup = [
-            { command = "${pkgs.feh}/bin/feh --bg-fill ${wallpaper}"; always = true; }
+            { command = "${pkgs.feh}/bin/feh --bg-fill --randomize ${lib.concatStringsSep " " wallpapers}"; always = true; }
         ];
     };
 

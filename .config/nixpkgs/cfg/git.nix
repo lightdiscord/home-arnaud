@@ -1,8 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
-let 
-    enable = true;
-
+let
     user = {
         name = "LightDiscord";
         email = "arnaud@lightdiscord.me";
@@ -13,6 +11,7 @@ let
     key = (import /etc/nixos/misc/keys.nix).gpg.arnaud;
 in {
     programs.git = {
+        enable = true;
         signing = {
             signByDefault = true;
             inherit key;
@@ -25,7 +24,5 @@ in {
             [core]
             editor=${editor}
         '';
-
-        inherit enable;
     };
 }

@@ -1,12 +1,11 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
-    pkgs = import ../../pkgs;
-    
+    profile = "wh5g275f";
     firefox = pkgs.latest.firefox-nightly-bin;
 in {
     home.file = {
-        ".mozilla/firefox/lr4gztxt.default/chrome/userChrome.css".source = ./userChrome.css;
+        ".mozilla/firefox/${profile}.default/chrome/userChrome.css".source = ./userChrome.css;
     };
 
     home.packages = [ firefox ];
