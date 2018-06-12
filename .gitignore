@@ -25,3 +25,6 @@
 
 # My binaries!
 !/bin
+
+# Unignore tmux
+!.tmux.conf

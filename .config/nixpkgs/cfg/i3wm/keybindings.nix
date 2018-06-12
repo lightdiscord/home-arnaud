@@ -1,7 +1,7 @@
 { pkgs, lib, package, scripts, modifier, volume, ... }:
 
 lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "+" + name) value) {
-        "Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+        "Return" = "exec ${pkgs.overrides.st}/bin/st";
         "Shift+q" = "kill";
         "d" = "exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop";
 

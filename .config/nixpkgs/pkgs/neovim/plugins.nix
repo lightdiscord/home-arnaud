@@ -51,9 +51,17 @@ in {
         };
     };
 
-    theme.perun = build {
-        owner = "aradunovic";
-        repo = "perun.vim";
-        sha256 = "04s5lj8yvha07m22709fy7c35x0047n6dwmqjgmfnv6cqwd1qirs";
+    theme = {
+        perun = build {
+            owner = "aradunovic";
+            repo = "perun.vim";
+            sha256 = "04s5lj8yvha07m22709fy7c35x0047n6dwmqjgmfnv6cqwd1qirs";
+          };
+
+        papaya = build {
+            owner = "henrynewcomer";
+            repo = "vim-theme-papaya";
+            sha256 = "0il684ha2h9p3sbjgxmkpa8l6khiv70b0zjcb3aa7fimzrdbcc9d";
+        };
     };
 }

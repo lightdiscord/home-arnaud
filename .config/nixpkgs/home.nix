@@ -12,7 +12,9 @@ let
         gcc
         gnumake
         latest.rustChannels.nightly.rust
-        nvim.package
+        overrides.neovim
+        overrides.st
+        (callPackage <nixos/pkgs/tools/misc/bat> {})
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium
         discord
@@ -22,11 +24,13 @@ let
         feh
         obs-studio
         netflix
+        xsel
     ]);
 in {
     imports = ([
         ./cfg/git.nix
         ./cfg/fish
+        ./cfg/news.nix
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm
         ./cfg/vscode
@@ -34,10 +38,12 @@ in {
         ./cfg/firefox
     ]);
 
-    home.packages = packages;
-    home.keyboard.layout = "fr";
+    home = {
+        inherit packages;
+        keyboard.layout = "fr";
+    };
 
-    manual.manpages.enable = false;
+    manual.manpages.enable = true;
 
     programs.home-manager = {
         enable = true;

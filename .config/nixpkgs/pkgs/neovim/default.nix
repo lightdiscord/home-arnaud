@@ -1,23 +1,23 @@
-{ callPackage, neovim, nvim, ... }:
+{ callPackage, neovim, nvimPlugins, ... }:
 
 let
-    plugins.start = with nvim.plugins; [
+    plugins.start = with nvimPlugins; [
         languages.nix
         languages.rust
         tools.ale
         tools.ctrlp
         tools.editorconfig
         tools.fugitive
-        theme.perun
+        theme.papaya
     ];
 
-    plugins.opt = with nvim.plugins; [];
+    plugins.opt = with nvimPlugins; [];
 
     withRuby = true;
 
     withPython = true;
     extraPythonPackages = [];
-    
+
     withPython3 = true;
     extraPython3Packages = [];
 in neovim.override {

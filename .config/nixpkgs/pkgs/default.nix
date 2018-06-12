@@ -1,9 +1,15 @@
 self: super:
 
 rec {
-    nvim.package = self.callPackage ./neovim {};
+    overrides = {
+        neovim = self.callPackage ./neovim {};
 
-    nvim.plugins = self.callPackage ./neovim/plugins.nix {};
+        st = self.callPackage ./st {};
+    };
+
+    nvimPlugins = self.callPackage ./neovim/plugins.nix {};
 
     netflix = self.callPackage ./netflix.nix {};
+
+
 }
