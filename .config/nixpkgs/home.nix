@@ -36,6 +36,7 @@ in {
         ./cfg/vscode
         ./cfg/redshift.nix
         ./cfg/firefox
+        ./cfg/mail
     ]);
 
     home = {

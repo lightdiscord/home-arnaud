@@ -1,15 +1,17 @@
 self: super:
 
-rec {
+let
+    callPackage = self.callPackage;
+in rec {
     overrides = {
-        neovim = self.callPackage ./neovim {};
+        neovim = callPackage ./neovim {};
 
-        st = self.callPackage ./st {};
+        st = callPackage ./st {};
     };
 
-    nvimPlugins = self.callPackage ./neovim/plugins.nix {};
+    nvimPlugins = callPackage ./neovim/plugins.nix {};
 
-    netflix = self.callPackage ./netflix.nix {};
+    netflix = callPackage ./netflix {};
 
-
+    protonmail-bridge = callPackage ./protonmail {};
 }
