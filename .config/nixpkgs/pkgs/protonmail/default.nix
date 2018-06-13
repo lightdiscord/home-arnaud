@@ -56,7 +56,5 @@ in stdenv.mkDerivation {
             --set QT_PLUGIN_PATH "$out/lib/plugins" \
             --set QML_IMPORT_PATH "${qmlPath}" \
             --set QML2_IMPORT_PATH "${qmlPath}"
-
-        echo ${qmlPath}
     '';
 }
