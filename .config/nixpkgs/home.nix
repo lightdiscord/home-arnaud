@@ -25,6 +25,7 @@ let
         obs-studio
         netflix
         xsel
+        zathura
     ]);
 in {
     imports = ([
