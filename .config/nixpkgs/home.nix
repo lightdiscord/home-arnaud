@@ -14,6 +14,7 @@ let
         latest.rustChannels.nightly.rust
         overrides.neovim
         overrides.st
+        (python36.withPackages (ps: with ps; [ numpy ]))
         (callPackage <nixos/pkgs/tools/misc/bat> {})
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         chromium

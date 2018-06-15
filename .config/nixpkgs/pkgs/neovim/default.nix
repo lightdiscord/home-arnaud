@@ -8,6 +8,8 @@ let
         tools.ctrlp
         tools.editorconfig
         tools.fugitive
+        tools.nerdtree
+        tools.header
         theme.papaya
     ];
 

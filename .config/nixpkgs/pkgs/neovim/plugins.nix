@@ -49,6 +49,18 @@ in {
             repo = "vim-fugitive";
             sha256 = "0nbqqp62mjj7a0q2jagqm3dzabsqdh3asqffwvqwhn3qcc2slw1i";
         };
+
+        nerdtree = build {
+            owner = "scrooloose";
+            repo = "nerdtree";
+            sha256 = "0snx080kdyb5qqip9skcsda8zy231lqady7fwfqmhp40nx5s6zdn";
+        };
+
+        header = build {
+            owner = "alpertuna";
+            repo = "vim-header";
+            sha256 = "0ssbcqm3048yzj6srjd67lkidff6i0hsblal890y49fb261yflpg";
+        };
     };
 
     theme = {
