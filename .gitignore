@@ -23,6 +23,9 @@
 # Fish 'n chips
 !.config/fish
 
+# EDITOR 2000
+!.config/nvim
+
 # My binaries!
 !/bin
 
