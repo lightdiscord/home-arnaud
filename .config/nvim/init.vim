@@ -15,6 +15,7 @@ set list
 
 " Plugin: NERDTree
 map <F3> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Plugin: vim-header
 let g:header_field_author = 'LightDiscord'
@@ -31,3 +32,11 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|minikube|npm|node_modules|cache|yarn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
+
+" Plugin: Ale
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+" Plugin: vim-airline-themes
+let g:airline_theme='minimalist'

@@ -23,6 +23,18 @@ in {
             repo = "rust.vim";
             sha256 = "1mn4jijfzz2jq215dnwkq5gxiw0ysmvrsrvq4aypr2ms2040iqiq";
         };
+
+        toml = build {
+            owner = "cespare";
+            repo = "vim-toml";
+            sha256 = "0nnm4ja5j9gcsl9cv7ra30slrlpjpy4dsl0ykg0yhdq1vbby3m6n";
+        };
+
+        fish = build {
+            owner = "dag";
+            repo = "vim-fish";
+            sha256 = "1yvjlm90alc4zsdsppkmsja33wsgm2q6kkn9dxn6xqwnq4jw5s7h";
+        };
     };
 
     tools = {
@@ -61,6 +73,12 @@ in {
             repo = "vim-header";
             sha256 = "0ssbcqm3048yzj6srjd67lkidff6i0hsblal890y49fb261yflpg";
         };
+
+        airline = build {
+            owner = "vim-airline";
+            repo = "vim-airline";
+            sha256 = "0g4g5fa0qy6hagic590sksa8z6xlmigdan64bya06jr9m7fd8a1a";
+        };
     };
 
     theme = {
@@ -74,6 +92,12 @@ in {
             owner = "henrynewcomer";
             repo = "vim-theme-papaya";
             sha256 = "0il684ha2h9p3sbjgxmkpa8l6khiv70b0zjcb3aa7fimzrdbcc9d";
+        };
+
+        airline = build {
+            owner = "vim-airline";
+            repo = "vim-airline-themes";
+            sha256 = "1j9y9irrzsq1bwp3b22ls016byi0yc9ymigzhw0n180rk6nb36c7";
         };
     };
 }

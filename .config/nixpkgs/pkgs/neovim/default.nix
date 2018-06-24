@@ -1,17 +1,25 @@
 { callPackage, neovim, nvimPlugins, ... }:
 
+with nvimPlugins;
+
 let
-    plugins.start = with nvimPlugins; [
-        languages.nix
-        languages.rust
-        tools.ale
-        tools.ctrlp
-        tools.editorconfig
-        tools.fugitive
-        tools.nerdtree
-        tools.header
-        theme.papaya
-    ];
+    plugins.start = with languages; [
+        nix
+        rust
+        toml
+        fish
+    ] ++ (with tools; [
+        ale
+        ctrlp
+        editorconfig
+        fugitive
+        nerdtree
+        header
+        airline
+    ]) ++ (with theme; [
+        airline
+        papaya
+    ]);
 
     plugins.opt = with nvimPlugins; [];
 

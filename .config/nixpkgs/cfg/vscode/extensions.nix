@@ -22,7 +22,7 @@ in {
         version = "1.2.0";
         sha256 = "0izdcpvqiaxs850xz7xz6m4yhh72i73inx75f2jdqf7q9amzp5xq";
     };
-    
+
     rust-lang.rust = build {
         name = "rust-lang.rust";
         version = "0.4.1";
@@ -34,7 +34,7 @@ in {
         version = "1.2.0";
         sha256 = "0nv71rv7rksqf4hdh7j9iaj4l0xipm67pg8wc5dbipv13liigxdq";
     };
-    
+
     vscodevim.vim = build {
         name = "vscodevim.vim";
         version = "0.11.4";
@@ -58,7 +58,7 @@ in {
         version = "0.3.2";
         sha256 = "08lhzhrn6p0xwi0hcyp6lj9bvpfj87vr99klzsiy8ji7621dzql3";
     };
-    
+
     yzhang.markdown-all-in-one = build {
         name = "yzhang.markdown-all-in-one";
         version = "1.2.0";
@@ -82,16 +82,22 @@ in {
         version = "1.1.6";
         sha256 = "1ldvpava9xlqy3zwwc0c04pk9dh09jwcwz5lk3b2cr1z8bxn54lh";
     };
-    
+
     octref.vetur = build {
         name = "octref.vetur";
         version = "0.11.7";
         sha256 = "07w5p0nw7wclyni2f9xx5pdgdx06war41zrdjjdakrzpng7jy0lr";
     };
-    
+
     vadimcn.vscode-lldb = build {
         name = "vadimcn.vscode-lldb";
         version = "0.8.6";
         sha256 = "13l8c1iv29j0x5jwysm9pn1fi2drn8lbbdvrvrx9pvc2ffa7xg3s";
+    };
+
+    MS-vsliveshare.vsliveshare = build {
+        name = "MS-vsliveshare.vsliveshare";
+        version = "0.3.319";
+        sha256 = "0krm60pw94dnhiql76qrghyjji87zbsinf0q0702n9x6101xrprr";
     };
 }

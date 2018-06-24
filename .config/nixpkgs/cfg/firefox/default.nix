@@ -2,11 +2,12 @@
 
 let
     profile = "wh5g275f";
-    firefox = pkgs.latest.firefox-nightly-bin;
+    firefox = pkgs.latest.firefox-bin;
 in {
-    home.file = {
-        ".mozilla/firefox/${profile}.default/chrome/userChrome.css".source = ./userChrome.css;
-    };
+    # TODO: New userChrome.css
+    # home.file = {
+    #     ".mozilla/firefox/${profile}.default/chrome/userChrome.css".source = ./userChrome.css;
+    # };
 
     home.packages = [ firefox ];
 }

@@ -28,6 +28,7 @@ let
         wwm.better-align
         octref.vetur
         vadimcn.vscode-lldb
+        MS-vsliveshare.vsliveshare
     ];
 in {
     home.file = {

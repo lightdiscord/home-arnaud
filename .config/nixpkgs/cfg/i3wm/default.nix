@@ -16,10 +16,6 @@ let
             url = "https://i.imgur.com/bjlCGMv.jpg";
             sha256 = "1nnpb5s1i06c2vdzlzgxvd5xjy6q4ys9ynsmlvwiwad5rjfsrzzj";
         })
-        (fetchurl {
-            url = "http://www.modafinilsale.com/data/out/654/232357678-anime-forest-background.jpg";
-            sha256 = "1slrarfr5zjy83vkw0y6j1mkhm420c5zgj63jczd65fkik2gxyv4";
-        })
     ];
 
     iconTheme = {
@@ -38,7 +34,7 @@ in {
     xsession.windowManager.i3 = {
         inherit enable package;
     };
-    
+
     xsession.windowManager.i3.config = {
         fonts = [ "Roboto 10" ];
 
@@ -57,7 +53,6 @@ in {
 
         assigns = {
             "3" = [{ class = "discord"; }];
-            "10" = [{ class = "Navigator"; } { class = "Firefox"; }];
         };
 
         window = {
@@ -69,10 +64,19 @@ in {
             ];
         };
 
+        bars = [
+            {
+                id = "default";
+                #command = "/datas/gits/lightdiscord/myStatus/target/debug/i3status";
+            }
+        ];
+
         startup = [
             { command = "${pkgs.feh}/bin/feh --bg-fill --randomize ${lib.concatStringsSep " " wallpapers}"; always = true; }
         ];
     };
+
+    home.file.".config/i3status/config".text = import ./i3status.nix {};
 
     services.screen-locker = {
         inactiveInterval = 10;
