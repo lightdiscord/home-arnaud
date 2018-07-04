@@ -30,4 +30,5 @@
 !/bin
 
 # Unignore tmux
+!.config/tmux
 !.tmux.conf
