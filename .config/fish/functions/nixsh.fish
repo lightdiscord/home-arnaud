@@ -1,1 +1,3 @@
-/nix/store/848fdm2zzvnlb5rd8hy96qqcq3y3h6q6-home-manager-files/.config/fish/functions/nixsh.fish
+function nixsh --description "nix-shell wrapper using fish"
+    nix-shell --command fish -p $argv
+end

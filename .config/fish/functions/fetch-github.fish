@@ -1,1 +1,3 @@
-/nix/store/848fdm2zzvnlb5rd8hy96qqcq3y3h6q6-home-manager-files/.config/fish/functions/fetch-github.fish
+function fetch-github --description "nix-prefetch-github"
+    nix-shell -p nix-prefetch-git --run "nix-prefetch-git git@github.com:$argv.git" | nix-shell -p jq --run "jq -r '.sha256'"
+end

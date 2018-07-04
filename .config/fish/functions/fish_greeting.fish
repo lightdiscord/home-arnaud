@@ -1,1 +1,6 @@
-/nix/store/848fdm2zzvnlb5rd8hy96qqcq3y3h6q6-home-manager-files/.config/fish/functions/fish_greeting.fish
+function fish_greeting
+    if test -n $TMUX
+        tmux attach -t central; or tmux new -s central
+        clear
+    end
+end

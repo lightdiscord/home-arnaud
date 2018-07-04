@@ -2,7 +2,7 @@
 /*
 
 # Some text
-!README.md
+!readme.md
 
 # Do I have to comment this ? You're not stupid !
 !.gitignore
@@ -16,9 +16,15 @@
 
 # Show i3wm configuration, even if it was generated with home-manager.
 !.config/i3
+!.config/dunst
+!.config/i3status
+.config/i3/config
+.config/dunst/dunstrc
+.config/i3status/config
 
 # Git configuration on the way!
 !.config/git
+.config/git/config
 
 # Fish 'n chips
 !.config/fish
@@ -26,8 +32,17 @@
 # EDITOR 2000
 !.config/nvim
 
+# My eyes!
+!.config/redshift
+
+# Crypto
+!/.gnupg
+/.gnupg/*
+!.gnupg/default.nix
+
 # My binaries!
 !/bin
 
 # Unignore tmux
+!.config/tmux
 !.tmux.conf

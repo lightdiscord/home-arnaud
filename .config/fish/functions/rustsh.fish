@@ -1,1 +1,3 @@
-/nix/store/848fdm2zzvnlb5rd8hy96qqcq3y3h6q6-home-manager-files/.config/fish/functions/rustsh.fish
+function rustsh --description "nixsh with rust"
+    nix-shell ~/.config/nixpkgs/shells/rustsh.nix --command fish
+end
