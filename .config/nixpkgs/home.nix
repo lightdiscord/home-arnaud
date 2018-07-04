@@ -17,7 +17,6 @@ let
         overrides.st
         vscode
         (python36.withPackages (ps: with ps; [ numpy ]))
-        (callPackage <nixos/pkgs/tools/misc/bat> {})
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         # chromium
         discord
@@ -29,6 +28,7 @@ let
         # netflix
         xsel
         # zathura
+        (winetricks.override { wine = wineStaging; })
     ]);
 in {
     imports = ([
@@ -40,7 +40,6 @@ in {
         ./cfg/i3wm
         #./cfg/vscode
         ./cfg/redshift.nix
-        ./cfg/firefox
         ./cfg/mail
     ]);
 

@@ -1,0 +1,16 @@
+language: nix
+
+script:
+  - make dist
+  - nix-store --optimize
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./.scripts/travis-deploy.sh
+  on:
+    branch: master
+
+notifications:
+  email:
+    on_success: never

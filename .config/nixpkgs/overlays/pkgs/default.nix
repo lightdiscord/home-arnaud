@@ -4,7 +4,7 @@ let
     callPackage = self.callPackage;
 in rec {
     overrides = {
-        neovim = callPackage ./neovim {};
+        neovim = callPackage ~/.config/nvim {};
 
         st = callPackage ./st {};
     };
