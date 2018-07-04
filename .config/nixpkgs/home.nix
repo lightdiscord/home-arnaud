@@ -25,7 +25,7 @@ in {
     imports = ([
         ~/.config/git
         ./cfg/news.nix
-        ./cfg/gpg-agent.nix
+        ~/.gnupg
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ~/.config/i3
         ~/.config/redshift

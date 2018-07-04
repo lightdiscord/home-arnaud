@@ -35,6 +35,11 @@
 # My eyes!
 !.config/redshift
 
+# Crypto
+!/.gnupg
+/.gnupg/*
+!.gnupg/default.nix
+
 # My binaries!
 !/bin
 
