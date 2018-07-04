@@ -28,7 +28,7 @@ in {
         ./cfg/news.nix
         ./cfg/gpg-agent.nix
     ] ++ lib.optionals sysconfig.services.xserver.enable [
-        ./cfg/i3wm
+        ~/.config/i3
         ./cfg/redshift.nix
         ./cfg/mail
     ]);

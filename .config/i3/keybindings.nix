@@ -1,9 +1,19 @@
-{ pkgs, lib, package, scripts, modifier, volume, ... }:
+{ config, pkgs, lib, ... }:
 
-lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "+" + name) value) {
-        "Return" = "exec ${pkgs.overrides.st}/bin/st";
+with lib;
+
+let
+  volume = 3;
+  
+  inherit (pkgs) overrides j4-dmenu-desktop alsaUtils callPackage;
+  inherit (config.xsession.windowManager.i3) package modifier;
+  
+  scripts = callPackage ./scripts.nix {};
+
+  keybindings = recursiveUpdate (mapAttrs' (name: value: nameValuePair ("${modifier}+${name}") value) {
+        "Return" = "exec ${overrides.st}/bin/st";
         "Shift+q" = "kill";
-        "d" = "exec ${pkgs.j4-dmenu-desktop}/bin/j4-dmenu-desktop";
+        "d" = "exec ${j4-dmenu-desktop}/bin/j4-dmenu-desktop";
 
         "Left" = "focus left";
         "Down" = "focus down";
@@ -61,17 +71,18 @@ lib.recursiveUpdate (lib.mapAttrs' (name: value: lib.nameValuePair (modifier + "
 
         "KP_Add" = "exec --no-startup-id ${scripts.random {}}";
         "Shift+KP_Add" = "exec --no-startup-id ${scripts.random { move = true; }}";
-}) {
-    "XF86AudioRaiseVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
-    "XF86AudioLowerVolume" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
-    "XF86AudioMute" = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
-
-    "XF86AudioPrev" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous";
-    "XF86AudioPlay" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause";
-    "XF86AudioNext" = "exec ${pkgs.dbus}/bin/dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next";
-
-    "--release Print" = "exec --no-startup-id ${scripts.screenshot {}}";
-    "--release Shift+Print" = "exec --no-startup-id ${scripts.screenshot { mode = "window"; }}";
-
-    "--release ${modifier}+l" = "exec --no-startup-id ${scripts.lock}";
+  }) {
+      "XF86AudioRaiseVolume" = "exec ${alsaUtils}/bin/amixer -q set Master ${toString volume}%+";
+      "XF86AudioLowerVolume" = "exec ${alsaUtils}/bin/amixer -q set Master ${toString volume}%-";
+      "XF86AudioMute" = "exec ${alsaUtils}/bin/amixer -q set Master toggle";
+  
+      "--release Print" = "exec --no-startup-id ${scripts.screenshot {}}";
+      "--release Shift+Print" = "exec --no-startup-id ${scripts.screenshot { mode = "window"; }}";
+  
+      "--release ${modifier}+l" = "exec --no-startup-id ${scripts.lock}";
+  };
+in {
+  xsession.windowManager.i3.config = {
+    inherit keybindings;
+  };
 }

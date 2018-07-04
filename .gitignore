@@ -16,6 +16,11 @@
 
 # Show i3wm configuration, even if it was generated with home-manager.
 !.config/i3
+!.config/dunst
+!.config/i3status
+.config/i3/config
+.config/dunst/dunstrc
+.config/i3status/config
 
 # Git configuration on the way!
 !.config/git
