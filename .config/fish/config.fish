@@ -1,1 +1,2 @@
-/nix/store/7y95nj44cw57kqmmg0j6srm16vnkbnws-home-manager-files/.config/fish/config.fish
+export GPG_TTY=(tty)
+export NIX_PATH="$NIX_PATH:$HOME/.nix-defexpr/channels"

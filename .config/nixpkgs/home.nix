@@ -24,7 +24,6 @@ let
 in {
     imports = ([
         ~/.config/git
-        ./cfg/fish
         ./cfg/news.nix
         ./cfg/gpg-agent.nix
     ] ++ lib.optionals sysconfig.services.xserver.enable [
