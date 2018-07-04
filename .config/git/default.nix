@@ -1,24 +1,19 @@
 { ... }:
 
 let
-    user = {
-        name = "LightDiscord";
-        email = "arnaud@lightdiscord.me";
-    };
-
+    arnaud = (import /etc/nixos/misc/users/arnaud.nix);
     editor = "nvim";
-
-    key = (import /etc/nixos/misc/keys.nix).gpg.arnaud;
 in {
     programs.git = {
         enable = true;
+
         signing = {
             signByDefault = true;
-            inherit key;
+            key = arnaud.gpg;
         };
 
-        userEmail = user.email;
-        userName = user.name;
+        userEmail = arnaud.email;
+        userName = arnaud.nickname;
 
         extraConfig = ''
             [core]

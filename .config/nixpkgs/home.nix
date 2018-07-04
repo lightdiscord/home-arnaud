@@ -23,7 +23,7 @@ let
     ]);
 in {
     imports = ([
-        ./cfg/git.nix
+        ~/.config/git
         ./cfg/fish
         ./cfg/news.nix
         ./cfg/gpg-agent.nix

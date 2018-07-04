@@ -19,6 +19,7 @@
 
 # Git configuration on the way!
 !.config/git
+.config/git/config
 
 # Fish 'n chips
 !.config/fish
