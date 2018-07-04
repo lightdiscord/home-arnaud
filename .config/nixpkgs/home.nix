@@ -28,7 +28,7 @@ in {
         ./cfg/gpg-agent.nix
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ~/.config/i3
-        ./cfg/redshift.nix
+        ~/.config/redshift
         ./cfg/mail
     ]);
 

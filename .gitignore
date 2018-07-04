@@ -32,6 +32,9 @@
 # EDITOR 2000
 !.config/nvim
 
+# My eyes!
+!.config/redshift
+
 # My binaries!
 !/bin
 
