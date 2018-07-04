@@ -4,8 +4,6 @@ let
     sysconfig = (import <nixpkgs/nixos> {}).config;
 
     packages = with pkgs; ([
-        taskwarrior
-        gitAndTools.gitflow
         psmisc
         tig
         tmate
@@ -13,22 +11,15 @@ let
         gnumake
         latest.rustChannels.nightly.rust
         #(rustChannelOf { date = "2018-06-20"; channel = "nightly"; }).rust
-        overrides.neovim
         overrides.st
-        vscode
-        (python36.withPackages (ps: with ps; [ numpy ]))
+        (callPackage ~/.config/nvim {})
     ] ++ lib.optionals sysconfig.services.xserver.enable [
-        # chromium
         discord
-        # spotify
         pavucontrol
         google-chrome
         feh
-        # obs-studio
-        # netflix
         xsel
-        # zathura
-        (winetricks.override { wine = wineStaging; })
+        xclip
     ]);
 in {
     imports = ([
@@ -38,7 +29,6 @@ in {
         ./cfg/gpg-agent.nix
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ./cfg/i3wm
-        #./cfg/vscode
         ./cfg/redshift.nix
         ./cfg/mail
     ]);
