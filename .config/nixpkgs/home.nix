@@ -24,12 +24,10 @@ let
 in {
     imports = ([
         ~/.config/git
-        ./cfg/news.nix
         ~/.gnupg
     ] ++ lib.optionals sysconfig.services.xserver.enable [
         ~/.config/i3
         ~/.config/redshift
-        ./cfg/mail
     ]);
 
     home = {
