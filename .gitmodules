@@ -1,6 +1,0 @@
-[submodule ".config/nixpkgs/overlays/nixpkgs-mozilla"]
-	path = .config/nixpkgs/overlays/nixpkgs-mozilla
-	url = https://github.com/mozilla/nixpkgs-mozilla.git
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = git@github.com:LightDiscord/Vim-files.git

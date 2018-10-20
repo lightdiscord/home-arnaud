@@ -1,2 +1,2 @@
-export GPG_TTY=(tty)
-export NIX_PATH="$NIX_PATH:$HOME/.nix-defexpr/channels"
+set GPG_TTY (tty)
+set PATH ~/.npm-global/bin $PATH

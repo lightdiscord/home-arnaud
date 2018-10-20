@@ -1,44 +1,39 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
+with lib;
 
 let
-    sysconfig = (import <nixpkgs/nixos> {}).config;
 
-    packages = with pkgs; ([
-        psmisc
-        tig
-        tmate
-        gcc
-        gnumake
-        latest.rustChannels.nightly.rust
-        #(rustChannelOf { date = "2018-06-20"; channel = "nightly"; }).rust
-        overrides.st
-        (callPackage ~/.config/nvim {})
-    ] ++ lib.optionals sysconfig.services.xserver.enable [
-        discord
-        pavucontrol
-        google-chrome
-        feh
-        xsel
-        xclip
-    ]);
+	sysconfig = import ./sysconfig.nix {};
+	links = import ./links.nix {};
+
+	inherit (links) awesome;
+
 in {
-    imports = ([
-        ~/.config/git
-        ~/.gnupg
-    ] ++ lib.optionals sysconfig.services.xserver.enable [
-        ~/.config/i3
-        ~/.config/redshift
-    ]);
+	nixpkgs.config = import ./config.nix;
 
-    home = {
-        inherit packages;
-        keyboard.layout = "fr";
-    };
+	imports = ([
+		./packages.nix
 
-    manual.manpages.enable = true;
+		../git
+		../../.gnupg
+	] ++ optionals sysconfig.xserver [
+		awesome
 
-    programs.home-manager = {
-        enable = true;
-        path = https://github.com/rycee/home-manager/archive/master.tar.gz;
-    };
+		../redshift
+		../mopidy
+	]);
+
+	home = {
+		keyboard.layout = "fr";
+	};
+
+	services.gnome-keyring = {
+		enable = true;
+		components = ["secrets" "pkcs11" "ssh"];
+	};
+
+	manual.manpages.enable = true;
+
+	services.compton.enable = sysconfig.xserver;
 }

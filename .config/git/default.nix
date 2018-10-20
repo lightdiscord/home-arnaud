@@ -1,15 +1,15 @@
 { ... }:
 
 let
-    arnaud = (import /etc/nixos/misc/users/arnaud.nix);
-    editor = "nvim";
+    arnaud = (import /etc/nixos/common/users/arnaud/data.nix);
+    editor = "code --wait";
 in {
     programs.git = {
         enable = true;
 
         signing = {
             signByDefault = true;
-            key = arnaud.gpg;
+            key = arnaud.keys.gpg;
         };
 
         userEmail = arnaud.email;

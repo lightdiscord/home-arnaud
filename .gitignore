@@ -29,9 +29,6 @@
 # Fish 'n chips
 !.config/fish
 
-# EDITOR 2000
-!.config/nvim
-
 # My eyes!
 !.config/redshift
 
@@ -46,3 +43,5 @@
 # Unignore tmux
 !.config/tmux
 !.tmux.conf
+
+!.config/mopidy
