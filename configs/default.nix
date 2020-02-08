@@ -27,4 +27,4 @@ let
   ];
 
 in
-  mkMerge (map installModule modules)
+  mkMerge (map installModule (map import modules))
