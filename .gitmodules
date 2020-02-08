@@ -1,0 +1,6 @@
+[submodule ".config/htop"]
+	path = .config/htop
+	url = git@gist.github.com:7b3a0e761edfb0da37bf14572b551243.git
+[submodule ".config/alacritty"]
+	path = .config/alacritty
+	url = git@gist.github.com:e6dde806028bf91bde22a172bae1ede2.git
