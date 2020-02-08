@@ -1,7 +1,5 @@
 { pkgs, lib, ... }:
 
-with lib;
-
 {
   require = [ ./configs ];
 
