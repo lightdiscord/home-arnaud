@@ -1,9 +1,7 @@
 { pkgs, lib, ... }:
 
 {
-  require = [ ./configs ];
-
-  nixpkgs.overlays = import ./overlays;
+  require = [ ./configs ./overlays ];
 
   fonts.fontconfig.enable = true;
 

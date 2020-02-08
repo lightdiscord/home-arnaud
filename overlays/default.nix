@@ -1,4 +1,6 @@
-[
-  (import ./unstable.nix)
-  (import ./custom.nix)
-]
+{
+  nixpkgs.overlays = [
+    (import ./unstable.nix)
+    (import ./custom.nix)
+  ];
+}
