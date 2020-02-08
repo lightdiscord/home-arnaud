@@ -1,0 +1,3 @@
+[
+  (import ./unstable.nix)
+]

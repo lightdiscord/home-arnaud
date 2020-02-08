@@ -6,13 +6,7 @@ let
   alacritty = import configs/alacritty;
   htop = import configs/htop;
 in {
-  nixpkgs.overlays = [
-    (
-      self: super: {
-        alacritty = nixos-unstable.alacritty;
-      }
-    )
-  ];
+  nixpkgs.overlays = import ./overlays;
 
   fonts.fontconfig.enable = true;
 
