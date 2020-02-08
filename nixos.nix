@@ -11,10 +11,6 @@ let
 in {
   require = [ "${home-manager}/nixos" ];
 
-  users.users.arnaud = {
-    packages = [ (pkgs.callPackage ../neovim-files { }) ];
-  };
-
   home-manager.useUserPackages = true;
   home-manager.users.arnaud = import ./default.nix;
 }

@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     gnome3.adwaita-icon-theme hicolor-icon-theme
+    my-neovim
   ];
 
   gtk.enable = true;

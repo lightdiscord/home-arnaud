@@ -10,3 +10,6 @@
 [submodule "configs/i3wm"]
 	path = configs/i3wm
 	url = git@gist.github.com:7c0156702834f302f85c1df8c0f1d4fb.git
+[submodule "configs/neovim-files"]
+	path = configs/neovim-files
+	url = git@github.com:lightdiscord/neovim-files.git
