@@ -2,12 +2,9 @@
 
 with lib;
 
-let
-  alacritty = import configs/alacritty;
-  htop = import configs/htop;
-  rofi = import configs/rofi;
-  i3wm = import configs/i3wm;
-in {
+{
+  require = [ ./configs ];
+
   nixpkgs.overlays = import ./overlays;
 
   fonts.fontconfig.enable = true;
@@ -17,25 +14,9 @@ in {
   xsession.enable = true;
   xsession.windowManager.command = "${pkgs.i3}/bin/i3";
 
-  home.packages =
-    builtins.concatMap
-      (module: pkgs.callPackage module.packages {})
-      [
-        alacritty
-        htop
-        rofi
-        i3wm
-      ]
-    ++ (with pkgs; [ gnome3.adwaita-icon-theme hicolor-icon-theme i3 ]);
-
-    home.file = let
-      mapFiles = map (mapAttrs (_: source: { inherit source; }));
-    in mkMerge (mapFiles [
-      alacritty.files
-      htop.files
-      rofi.files
-      i3wm.files
-    ]);
+  home.packages = with pkgs; [
+    gnome3.adwaita-icon-theme hicolor-icon-theme
+  ];
 
   gtk.enable = true;
   gtk.iconTheme = {
