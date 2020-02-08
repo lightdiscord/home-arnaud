@@ -1,6 +1,4 @@
-# Dotfiles
+# home-arnaud
 
-My incredible files with a dot.
-
----
+My user environment managed by nix with home-manager.
 

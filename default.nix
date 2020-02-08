@@ -1,8 +1,6 @@
 { pkgs, lib, ... }:
 
 let
-  nixos-unstable = import <nixos-unstable> { };
-
   alacritty = import configs/alacritty;
   htop = import configs/htop;
 in {
