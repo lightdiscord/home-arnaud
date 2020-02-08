@@ -1,8 +1,11 @@
 { pkgs, lib, ... }:
 
+with lib;
+
 let
   alacritty = import configs/alacritty;
   htop = import configs/htop;
+  rofi = import configs/rofi;
 in {
   nixpkgs.overlays = import ./overlays;
 
@@ -14,10 +17,17 @@ in {
       [
         alacritty.packages
         htop.packages
+        rofi.packages
       ]
     ++ (with pkgs; [ gnome3.adwaita-icon-theme hicolor-icon-theme ]);
 
-  home.file = lib.mkMerge (map (lib.mapAttrs (_: source: { inherit source; })) [ alacritty.files htop.files ]);
+    home.file = let
+      mapFiles = map (mapAttrs (_: source: { inherit source; }));
+    in mkMerge (mapFiles [
+      alacritty.files
+      htop.files
+      rofi.files
+    ]);
 
   gtk.enable = true;
   gtk.iconTheme = {

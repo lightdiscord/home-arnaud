@@ -4,3 +4,6 @@
 [submodule "configs/alacritty"]
 	path = configs/alacritty
 	url = git@gist.github.com:e6dde806028bf91bde22a172bae1ede2.git
+[submodule "configs/rofi"]
+	path = configs/rofi
+	url = git@gist.github.com:6aed2db6dcf4467f6f51a2e5223e6a86.git
