@@ -7,3 +7,6 @@
 [submodule "configs/rofi"]
 	path = configs/rofi
 	url = git@gist.github.com:6aed2db6dcf4467f6f51a2e5223e6a86.git
+[submodule "configs/i3wm"]
+	path = configs/i3wm
+	url = git@gist.github.com:7c0156702834f302f85c1df8c0f1d4fb.git
