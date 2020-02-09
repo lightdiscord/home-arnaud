@@ -13,3 +13,6 @@
 [submodule "configs/neovim-files"]
 	path = configs/neovim-files
 	url = git@github.com:lightdiscord/neovim-files.git
+[submodule "configs/i3status"]
+	path = configs/i3status
+	url = git@gist.github.com:a7aff58fd167ed2a584b29691c1d9f9a.git
