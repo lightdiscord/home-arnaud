@@ -16,3 +16,6 @@
 [submodule "configs/i3status"]
 	path = configs/i3status
 	url = git@gist.github.com:a7aff58fd167ed2a584b29691c1d9f9a.git
+[submodule "configs/npmrc"]
+	path = configs/npmrc
+	url = git@gist.github.com:c19b6e48f4ee8ff4f2eba173f71d3906.git

@@ -10,6 +10,7 @@ let
     ./i3wm
     ./i3status
     ./rofi
+    ./npmrc
   ];
 
   installPackages = module: {
