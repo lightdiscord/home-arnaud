@@ -13,6 +13,8 @@
   home.packages = with pkgs; [
     gnome3.adwaita-icon-theme hicolor-icon-theme
     my-neovim
+    mypaint
+    protonmail-bridge
   ];
 
   gtk.enable = true;
@@ -20,4 +22,5 @@
     package = pkgs.paper-icon-theme;
     name = "Paper";
   };
+
 }
