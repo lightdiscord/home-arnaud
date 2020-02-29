@@ -7,10 +7,11 @@ let
   modules = [
     ./alacritty
     ./htop
-    ./i3wm
-    ./i3status
+    # ./i3wm
+    # ./i3status
     ./rofi
     ./npmrc
+    ./awesomewm
   ];
 
   installPackages = module: {
@@ -28,5 +29,9 @@ let
     (mkIf (module ? files) (installFiles module))
   ];
 
+  callModule = module: if isFunction module
+    then pkgs.callPackage module { }
+    else module;
+
 in
-  mkMerge (map installModule (map import modules))
+  mkMerge (map (module: installModule (callModule (import module))) modules)

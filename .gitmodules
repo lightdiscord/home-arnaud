@@ -19,3 +19,6 @@
 [submodule "configs/npmrc"]
 	path = configs/npmrc
 	url = git@gist.github.com:c19b6e48f4ee8ff4f2eba173f71d3906.git
+[submodule "configs/awesomewm"]
+	path = configs/awesomewm
+	url = git@github.com:lightdiscord/awesomewm.git
