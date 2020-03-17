@@ -22,3 +22,9 @@
 [submodule "configs/awesomewm"]
 	path = configs/awesomewm
 	url = git@github.com:lightdiscord/awesomewm.git
+[submodule "overlays/nixpkgs-mozilla"]
+	path = overlays/nixpkgs-mozilla
+	url = https://github.com/mozilla/nixpkgs-mozilla.git
+[submodule "home-manager"]
+	path = home-manager
+	url = git@github.com:lightdiscord/home-manager.git
