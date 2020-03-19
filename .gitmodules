@@ -28,3 +28,6 @@
 [submodule "home-manager"]
 	path = home-manager
 	url = git@github.com:lightdiscord/home-manager.git
+[submodule "configs/xbindkeys"]
+	path = configs/xbindkeys
+	url = git@gist.github.com:151ddb3d6c5b0231413e4e1f334cf9eb.git

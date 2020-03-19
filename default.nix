@@ -15,6 +15,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    steam
     gnome3.adwaita-icon-theme hicolor-icon-theme
     my-neovim
     mypaint
