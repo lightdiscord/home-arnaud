@@ -31,3 +31,6 @@
 [submodule "dependencies/nix-compton-tryone144"]
 	path = dependencies/nix-compton-tryone144
 	url = git@github.com:lightdiscord/nix-compton-tryone144.git
+[submodule "configs/tmux"]
+	path = configs/tmux
+	url = git@gist.github.com:71c361d52d7f4953aafff9e540019f3a.git

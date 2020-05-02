@@ -7,7 +7,7 @@
     ./rofi
     ./npmrc
     ./awesomewm
-    # ./xbindkeys
     ./neovim-files
+    ./tmux
   ];
 }
