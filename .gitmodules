@@ -27,7 +27,7 @@
 	url = https://github.com/mozilla/nixpkgs-mozilla.git
 [submodule "home-manager"]
 	path = home-manager
-	url = git@github.com:lightdiscord/home-manager.git
-[submodule "configs/xbindkeys"]
-	path = configs/xbindkeys
-	url = git@gist.github.com:151ddb3d6c5b0231413e4e1f334cf9eb.git
+	url = git@github.com:rycee/home-manager.git
+[submodule "dependencies/nix-compton-tryone144"]
+	path = dependencies/nix-compton-tryone144
+	url = git@github.com:lightdiscord/nix-compton-tryone144.git

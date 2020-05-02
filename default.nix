@@ -15,13 +15,25 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    steam
     gnome3.adwaita-icon-theme hicolor-icon-theme
-    my-neovim
     mypaint
     protonmail-bridge
+    neovim
     latest.firefox-nightly-bin
+    latest.rustChannels.nightly.rust
   ];
+
+  services.picom = {
+    enable = true;
+    package = pkgs.callPackage ./dependencies/nix-compton-tryone144 { };
+    experimentalBackends = true;
+    blur = true;
+    backend = "glx";
+    extraOptions = ''
+      blur-method = "dual_kawase";
+      blur-strength = 8;
+    '';
+  };
 
   services.gnome-keyring = {
     enable = true;
