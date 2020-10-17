@@ -1,0 +1,92 @@
+{
+  "nodes": {
+    "config-nvim": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1603113097,
+        "narHash": "sha256-Tjr4IvmzwnZJ5No+2Rtf0MzUe0lhrVTwT0idQPJgRHw=",
+        "owner": "lightdiscord",
+        "repo": "config-nvim",
+        "rev": "e094951db572a33ab11a9d455caaf8b15041f4ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lightdiscord",
+        "repo": "config-nvim",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1602535872,
+        "narHash": "sha256-5dnSqYNzwuL2tiQfSFCbX97Hfl4Lf6q4nghQBwm9pD8=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "e7d5531cfa770afc591f8dc5542eb4fba9962885",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "e7d5531cfa770afc591f8dc5542eb4fba9962885",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1603030259,
+        "narHash": "sha256-McbYPtKeuKB9Sr++JIMSpWOQpiaTPnVUit/dLWahUA4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "07fef1bea1e383bf4d81f08d79fdca8f3bfe344c",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1602964985,
+        "narHash": "sha256-vV70SKPxL+Zn72JFL+aWIhYIZ24sBwi7mkkj46UsbL4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4fb4b69d9b1c3e6a70c7083888e546fdc8a42f3e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1602964985,
+        "narHash": "sha256-vV70SKPxL+Zn72JFL+aWIhYIZ24sBwi7mkkj46UsbL4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4fb4b69d9b1c3e6a70c7083888e546fdc8a42f3e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "config-nvim": "config-nvim",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs_3"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
