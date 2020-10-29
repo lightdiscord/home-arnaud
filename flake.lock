@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1603113097,
-        "narHash": "sha256-Tjr4IvmzwnZJ5No+2Rtf0MzUe0lhrVTwT0idQPJgRHw=",
+        "lastModified": 1604002808,
+        "narHash": "sha256-eJwyzEAagmKEaQEEh/IaEYzmop4X+rWnvdSGeh/Mmlw=",
         "owner": "lightdiscord",
         "repo": "config-nvim",
-        "rev": "e094951db572a33ab11a9d455caaf8b15041f4ce",
+        "rev": "b9bd51b7cc77830a0e453815a4863ff9c848d839",
         "type": "github"
       },
       "original": {
